@@ -21,3 +21,7 @@ export const getFeedsState = (state: RootState) => state.feeds;
 
 export const getChoosedOrderSelector = (state: RootState) =>
   state.feeds.choosedOrder;
+
+//user
+export const isAuthCheckedSelector = (state: RootState) => state.user.loaded;
+export const userDataSelector = (state: RootState) => state.user.user;
