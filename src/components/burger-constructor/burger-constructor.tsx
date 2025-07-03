@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
 import { useDispatch, useSelector } from '../../services/store';
@@ -34,11 +34,14 @@ export const BurgerConstructor: FC = () => {
       navigate('/login');
     } else {
       dispatch(createOrder(constructorItems));
-      if (ingredients.length > 0) {
-        dispatch(orderBurger(ingredients));
-      }
     }
   };
+
+  useEffect(() => {
+    if (ingredients.length > 0) {
+      dispatch(orderBurger(ingredients));
+    }
+  }, [ingredients, dispatch]);
 
   const closeOrderModal = () => {
     dispatch(clearOrder());

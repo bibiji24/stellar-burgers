@@ -7,11 +7,11 @@ import { updateUserData } from '../../services/slices/userSlice';
 export const Profile: FC = () => {
   /** TODO: взять переменную из стора */
   const dispatch = useDispatch();
-  const user = useSelector(userDataSelector) || { name: '', email: '' };
+  const user = useSelector(userDataSelector);
 
   const [formValue, setFormValue] = useState({
-    name: user.name,
-    email: user.email,
+    name: user?.name || '',
+    email: user?.email || '',
     password: ''
   });
 
@@ -36,8 +36,8 @@ export const Profile: FC = () => {
   const handleCancel = (e: SyntheticEvent) => {
     e.preventDefault();
     setFormValue({
-      name: user.name,
-      email: user.email,
+      name: user?.name || '',
+      email: user?.email || '',
       password: ''
     });
   };
