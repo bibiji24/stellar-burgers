@@ -25,3 +25,12 @@ export const getChoosedOrderSelector = (state: RootState) =>
 //user
 export const isAuthCheckedSelector = (state: RootState) => state.user.loaded;
 export const userDataSelector = (state: RootState) => state.user.user;
+
+//order
+export const orderRequestSelector = (state: RootState) =>
+  state.order.orderRequest;
+
+export const orderSelector = (state: RootState) => state.order.order;
+
+export const orderIngredientsSelector = (state: RootState) =>
+  state.order.ingredients;

@@ -116,6 +116,20 @@ const App = () => {
               />
             }
           />
+          <Route
+            path='/profile/orders/:number'
+            element={
+              <ProtectedRoute>
+                <Modal
+                  children={<OrderInfo />}
+                  title={'Детали заказа'}
+                  onClose={() => {
+                    navigate('/profile/orders');
+                  }}
+                />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       )}
     </div>
