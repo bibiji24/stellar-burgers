@@ -1,0 +1,7 @@
+{
+  "success":true,
+  "user":{
+    "email":"sample@sample.sam",
+    "name":"User"
+  }
+}
