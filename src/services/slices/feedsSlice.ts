@@ -15,7 +15,7 @@ export type TFeedsState = {
   choosedOrder: TOrder | null;
 };
 
-const feedsInitialState: TFeedsState = {
+export const feedsInitialState: TFeedsState = {
   orders: [],
   feeds: [],
   total: 0,

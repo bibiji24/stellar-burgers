@@ -3,7 +3,14 @@ import {
   test,
   describe
 } from '@jest/globals';
-import { clearOrder, createOrder, orderBurger, orderSlice, TOrderState } from './orderSlice';
+import {
+  clearOrder,
+  createOrder,
+  orderBurger,
+  orderInitialState as initialState,
+  orderSlice,
+  TOrderState
+} from './orderSlice';
 import { TConstructorIngredient } from '@utils-types';
 import { TConstructorState } from './constructorSlice';
 
@@ -53,13 +60,6 @@ const mockBun = {
   image: "https://code.s3.yandex.net/react/code/bun-02.png",
   image_mobile: "https://code.s3.yandex.net/react/code/bun-02-mobile.png",
   image_large: "https://code.s3.yandex.net/react/code/bun-02-large.png",
-};
-
-const initialState: TOrderState = {
-  order: null,
-  ingredients: [],
-  error: null,
-  orderRequest: false
 };
 
 const mockOrder = {

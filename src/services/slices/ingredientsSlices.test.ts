@@ -6,7 +6,10 @@ import {
   jest
 } from '@jest/globals';
 import { configureStore } from '@reduxjs/toolkit';
-import ingredientsSlice, { getIngredients, TIngredientsState } from './ingredientsSlices';
+import ingredientsSlice, {
+  getIngredients,
+  initialIngredientsState as initialState
+} from './ingredientsSlices';
 import { TIngredient } from '@utils-types';
 import { getIngredientsApi } from '../../utils/burger-api';
 
@@ -55,13 +58,6 @@ const mockIngredients: TIngredient[]= [
 jest.mock('../../utils/burger-api');
 
 const { reducer } = ingredientsSlice;
-
-const initialState: TIngredientsState = {
-  ingredients: [],
-  loading: false,
-  error: null
-}
-
 
 describe('Test of ingredientsSlice', () => {
   let store: any;

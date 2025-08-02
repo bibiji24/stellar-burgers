@@ -4,7 +4,15 @@ import {
   describe,
   jest
 } from '@jest/globals';
-import { getUserInfo, loginUser, logoutUser, registerUser, TUserState, updateUserData, userSlice } from './userSlice';
+import {
+  getUserInfo,
+  loginUser,
+  logoutUser,
+  registerUser,
+  TUserState,
+  updateUserData,
+  userSlice
+} from './userSlice';
 import { TUser } from '@utils-types';
 import { userInitialState as initialState } from './userSlice' ;
 

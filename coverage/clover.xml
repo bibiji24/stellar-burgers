@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1754093217805" clover="3.2.0">
-  <project timestamp="1754093217805" name="All files">
-    <metrics statements="663" coveredstatements="455" conditionals="48" coveredconditionals="47" methods="31" coveredmethods="13" elements="742" coveredelements="515" complexity="0" loc="663" ncloc="663" packages="2" files="7" classes="7"/>
+<coverage generated="1754095583174" clover="3.2.0">
+  <project timestamp="1754095583174" name="All files">
+    <metrics statements="677" coveredstatements="469" conditionals="48" coveredconditionals="47" methods="31" coveredmethods="13" elements="756" coveredelements="529" complexity="0" loc="677" ncloc="677" packages="3" files="8" classes="8"/>
+    <package name="services">
+      <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="rootReducer.ts" path="/Users/leonidnikiforov/Yandex.Disk.localized/Frontend/stellar-burgers/src/services/rootReducer.ts">
+        <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="services.slices">
       <metrics statements="368" coveredstatements="368" conditionals="48" coveredconditionals="47" methods="13" coveredmethods="13"/>
       <file name="constructorSlice.ts" path="/Users/leonidnikiforov/Yandex.Disk.localized/Frontend/stellar-burgers/src/services/slices/constructorSlice.ts">

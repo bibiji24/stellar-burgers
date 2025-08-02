@@ -5,7 +5,7 @@ import {
   describe,
   jest
 } from '@jest/globals';
-import constructorSlice, { TConstructorState } from './constructorSlice';
+import constructorSlice, { constructorInitialState as initialState, TConstructorState } from './constructorSlice';
 import { TConstructorIngredient } from '@utils-types';
 
 const { reducer } = constructorSlice;
@@ -16,11 +16,6 @@ const {
   deleteConstructorItem,
   clearConstructor,
 } = constructorSlice.actions;
-
-const initialState: TConstructorState = {
-  ingredients: [],
-  bun: null,
-};
 
 const mockIngredients: TConstructorIngredient[] = [
   {

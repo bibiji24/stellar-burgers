@@ -3,19 +3,10 @@ import {
   test,
   describe
 } from '@jest/globals';
-import feedsSlice, { getAllFeeds, getAllOrders, getOrderById, TFeedsState } from './feedsSlice';
+import feedsSlice, { feedsInitialState as initialState, getAllFeeds, getAllOrders, getOrderById, TFeedsState } from './feedsSlice';
 import { TOrder } from '@utils-types';
 
 const { reducer } = feedsSlice;
-
-const initialState: TFeedsState = {
-  orders: [],
-  feeds: [],
-  total: 0,
-  totalToday: 0,
-  error: null,
-  choosedOrder: null
-}
 
 const mockOrders: TOrder[] = [{
   _id: '123',
