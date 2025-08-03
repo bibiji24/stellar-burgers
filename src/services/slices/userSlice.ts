@@ -6,7 +6,7 @@ import {
   TLoginData,
   TRegisterData,
   updateUserApi
-} from '@api';
+} from '../../utils/burger-api';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TUser } from '@utils-types';
 import { deleteCookie, setCookie } from '../../utils/cookie';
@@ -18,15 +18,10 @@ export type TUserState = {
   loaded: boolean;
 };
 
-const userInitialState: TUserState = {
+export const userInitialState: TUserState = {
   user: null,
   error: null,
   loaded: false
-};
-
-const saveTokens = (data: { refreshToken: string; accessToken: string }) => {
-  localStorage.setItem('refreshToken', data.refreshToken);
-  setCookie('accessToken', data.accessToken);
 };
 
 export const getUserInfo = createAsyncThunk('user/getInfo', getUserApi);
@@ -79,7 +74,6 @@ export const userSlice = createSlice({
         state.user = action.payload.user;
         state.loaded = true;
         state.error = null;
-        saveTokens(action.payload);
       })
       .addCase(registerUser.pending, (state) => {
         state.loaded = false;
@@ -93,7 +87,6 @@ export const userSlice = createSlice({
         state.user = action.payload.user;
         state.loaded = true;
         state.error = null;
-        saveTokens(action.payload);
       })
       .addCase(updateUserData.pending, (state) => {
         state.loaded = false;
@@ -119,8 +112,6 @@ export const userSlice = createSlice({
         state.user = null;
         state.error = null;
         state.loaded = true;
-        localStorage.removeItem('refreshToken');
-        deleteCookie('accessToken');
       });
   }
 });

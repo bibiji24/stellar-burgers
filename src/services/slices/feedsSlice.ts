@@ -1,4 +1,8 @@
-import { getFeedsApi, getOrderByNumberApi, getOrdersApi } from '@api';
+import {
+  getFeedsApi,
+  getOrderByNumberApi,
+  getOrdersApi
+} from '../../utils/burger-api';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TOrder } from '@utils-types';
 
@@ -11,7 +15,7 @@ export type TFeedsState = {
   choosedOrder: TOrder | null;
 };
 
-const feedsInitialState: TFeedsState = {
+export const feedsInitialState: TFeedsState = {
   orders: [],
   feeds: [],
   total: 0,
