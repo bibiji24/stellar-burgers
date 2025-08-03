@@ -1,4 +1,13 @@
 describe('Tests of ConstructorPage', function() {
+  const elementsSelectors ={
+    modal: 'div[id=modals]',
+    modalCloseButton: '[data-testid="modal-close-button"]',
+    constructorElement: '[data-testid="constructor-element"]',
+    topBun: '[data-testid="top-bun"]',
+    botomBun: '[data-testid="bottom-bun"]',
+    ingredient: '[data-testid="ingredient"]',
+    addIngredient: '[data-testid="ingredient"] button'
+  }
   beforeEach(() => {
     cy.intercept('GET', 'api/ingredients', {
       fixture: 'ingredients.json'
@@ -16,7 +25,9 @@ describe('Tests of ConstructorPage', function() {
     cy.setCookie('accessToken', 'mock-access-token');
     localStorage.setItem('refreshToken', 'mock-refresh-token');
 
-    cy.visit('http://localhost:4000');
+    cy.visit('/');
+
+    cy.get(elementsSelectors.modal).as('modal')
 
     cy.wait(['@getIngredients', '@userData']);
   });
@@ -30,49 +41,49 @@ describe('Tests of ConstructorPage', function() {
   })
 
   it('Ingredients can be added', function() {
-    cy.get('[data-testid="ingredient"] button').each(function($btn) {
+    cy.get(elementsSelectors.addIngredient).each(function($btn) {
       if (cy.wrap($btn).contains('Добавить')) {
         cy.wrap($btn).click();
       }
     })
-    cy.get('[data-testid="constructor-element"]').should('have.length', 2);
-    cy.get('[data-testid="top-bun"]').should('have.length', 1);
-    cy.get('[data-testid="bottom-bun"]').should('have.length', 1);
+    cy.get(elementsSelectors.constructorElement).should('have.length', 2);
+    cy.get(elementsSelectors.topBun).should('have.length', 1);
+    cy.get(elementsSelectors.botomBun).should('have.length', 1);
   })
 
   it('modals work properly', function() {
-    cy.get('[data-testid="ingredient"]').first()
+    cy.get(elementsSelectors.ingredient).first()
       .click();
-    cy.get('div[id=modals]').children().should('have.length.above', 1);
-    cy.get('div[id=modals]').first().within(() => {
-      cy.get('[data-testid="modal-close-button"]').click();
+    cy.get('@modal').children().should('have.length.above', 1);
+    cy.get('@modal').first().within(() => {
+      cy.get(elementsSelectors.modalCloseButton).click();
     })
-    cy.get('div[id=modals]').children().should('have.length', 0);
+    cy.get('@modal').children().should('have.length', 0);
   });
 
   it('modals are closed on overlay click', function() {
-    cy.get('[data-testid="ingredient"]').first()
+    cy.get(elementsSelectors.ingredient).first()
       .click();
-    cy.get('div[id=modals]').children().should('have.length.above', 1);
-    cy.get('div[id=modals]').children().last().click({ force: true });
-    cy.get('div[id=modals]').children().should('have.length', 0);
+    cy.get('@modal').children().should('have.length.above', 1);
+    cy.get('@modal').children().last().click({ force: true });
+    cy.get('@modal').children().should('have.length', 0);
   });
 
   it('make order', function() {
-    cy.get('[data-testid="ingredient"] button').each(function($btn) {
+    cy.get(elementsSelectors.addIngredient).each(function($btn) {
       if (cy.wrap($btn).contains('Добавить')) {
         cy.wrap($btn).click();
       }
     })
     cy.get('[data-testid="order-button"]').click();
-    cy.get('div[id=modals]').children().should('have.length.above', 1);
+    cy.get('@modal').children().should('have.length.above', 1);
     cy.contains('Ваш заказ начали готовить');
     cy.contains('11111');
-    cy.get('div[id=modals]').first().within(() => {
-      cy.get('[data-testid="modal-close-button"]').click();
+    cy.get('@modal').first().within(() => {
+      cy.get(elementsSelectors.modalCloseButton).click();
     })
-    cy.get('[data-testid="constructor-element"]').should('have.length', 0);
-    cy.get('[data-testid="top-bun"]').should('have.length', 0);
-    cy.get('[data-testid="bottom-bun"]').should('have.length', 0);
+    cy.get(elementsSelectors.constructorElement).should('have.length', 0);
+    cy.get(elementsSelectors.topBun).should('have.length', 0);
+    cy.get(elementsSelectors.botomBun).should('have.length', 0);
   })
 });
